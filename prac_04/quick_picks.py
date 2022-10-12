@@ -7,13 +7,15 @@ import random
 NUMBER_OF_QUICK_PICKS = int(input("How many quick picks? "))
 MIN_NUMBER = 1
 MAX_NUMBER = 45
+NUMBERS_PER_LINE = 5
 
-quick_picks = []
 for i in range(0, NUMBER_OF_QUICK_PICKS, 1):
     potential_numbers = list(range(MIN_NUMBER, MAX_NUMBER + 1))
     random.shuffle(potential_numbers)
-    numbers = potential_numbers[:5]
-    quick_picks.append(numbers)
+    numbers = potential_numbers[:NUMBERS_PER_LINE]
+    for j in range(0, NUMBERS_PER_LINE, 1):
+        print(f"{str(numbers[j]):>2}", end=" ")
+    print()
 
 
 
