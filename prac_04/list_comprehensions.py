@@ -6,6 +6,7 @@ List comprehensions
 names = ["Bob", "Angel", "Jimi", "Alan", "Ada"]
 full_names = ["Bob Martin", "Angel Harlem", "Jimi Hendrix", "Alan Turing", "Ada Lovelace"]
 
+"""
 # for loop that creates a new list containing the first letter of each name
 first_initials = []
 for name in names:
@@ -28,17 +29,23 @@ print(a_names)
 # and here's the join string method being used to create a single string from the names like:
 # 'Ada Alan Angel Bob Jimi'
 print(" ".join(sorted(names)))
+"""
 
-# TODO: list comprehension to create a list of all the full_names in lowercase format
-# lowercase_full_names =
+# list comprehension to create a list of all the full_names in lowercase format
+lowercase_full_names = [full_name.lower() for full_name in full_names]
 
 almost_numbers = ['0', '10', '21', '3', '-7', '88', '9']
-# TODO: list comprehension to create a list of integers from the above list of strings
-# numbers =
+# list comprehension to create a list of integers from the above list of strings
+numbers = [int(almost_number) for almost_number in almost_numbers]
 
-# TODO: list comprehension to create a list of only the numbers that are
+# list comprehension to create a list of only the numbers that are
 # greater than 9 from the numbers (not strings) you just created
+numbers_greater_than_9 = [number for number in numbers if number > 9]
 
 # TODO: (more advanced) use a list comprehension and the join string method
 # to create a string (not list) of the last names for those full names longer than 11 characters
 # the result should be: 'Harlem, Hendrix, Lovelace'
+last_names_longer_than_11_characters = " ".join([full_name.split()[1]
+                                                 for full_name in full_names
+                                                 if len(full_name) > 11])
+# note: to achieve the expected result, you must count the space between first and last names as a character
