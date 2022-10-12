@@ -2,6 +2,28 @@ AMOUNT_OF_NUMBERS = 5
 
 
 def main():
+    exercise = input("Choose an exercise\n"
+                      "\n"
+                      "(N)umbers exercise\n"
+                      "(S)ecurity checker exercise\n")
+    if exercise == "N":
+        numbers_exercise()
+    elif exercise == "S":
+        security_exercise()
+
+
+def security_exercise():
+    usernames = ['jimbo', 'giltson98', 'derekf', 'WhatSup', 'NicolEye', 'swei45', 'BaseInterpreterInterface',
+                 'BaseStdIn', 'Command', 'ExecState', 'InteractiveConsole', 'InterpreterInterface', 'StartServer',
+                 'bob']
+    username = input("Enter username: ")
+    if username in usernames:
+        print("Access Granted")
+    else:
+        print("Access denied")
+
+
+def numbers_exercise():
     print_number_info(get_numbers())
 
 
