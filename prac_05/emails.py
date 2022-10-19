@@ -1,5 +1,5 @@
 """Expected time: 30 mins
-   Actual time: """
+   Actual time: 36 mins"""
 
 
 def main():
