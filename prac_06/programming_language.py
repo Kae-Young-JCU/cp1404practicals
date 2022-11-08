@@ -6,6 +6,7 @@ class ProgrammingLanguage:
         self.year = year
 
     def is_dynamic(self):
+        """returns true if type is dynamic"""
         return self.typing == "Dynamic"
 
     def __str__(self):
