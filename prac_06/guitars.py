@@ -29,3 +29,4 @@ for guitar in guitars:
         print("(vintage)")
     else:
         print()
+    counter += 1
