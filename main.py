@@ -1,16 +1,26 @@
-# This is a sample Python script.
+"""
+names = ["Ada", "Alan", "Bill", "John"]
+while len(names) > 0:
+    print(", ".join(names))
+    name_to_remove = input("Who do you want to remove? ")
+    try:
+        names.remove(name_to_remove)
+    except ValueError:
+        print(f"{name_to_remove} is not on the list")
+print("The list is now empty")
+"""
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+
+def get_numbers():
+    text = input("Enter numbers seperated by commas: ")
+    numbers = text.split(",")
+    for number in numbers:
+        try:
+            float(number)
+        except ValueError:
+            print("Please enter only numbers")
+            get_numbers()
+    return numbers
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+print(get_numbers())
