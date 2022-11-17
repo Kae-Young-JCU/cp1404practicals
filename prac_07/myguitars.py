@@ -6,6 +6,8 @@ guitars = []
 guitar_file = open("guitars.csv")
 reader = csv.reader(guitar_file)
 for row in reader:
-    parts = row.split(",")
-    guitars.append(parts[0], int(parts[1]), float(parts[2]))
+    guitars.append(guitar.Guitar(row[0], int(row[1]), float(row[2])))
 guitar_file.close()
+guitars.sort()
+for guitar in guitars:
+    print(guitar)
