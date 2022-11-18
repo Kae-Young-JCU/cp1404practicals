@@ -10,12 +10,7 @@ MENU = "Select an option:\n" \
 def main():
     # Load default projects file
     projects = []
-    with open("projects.txt", 'r') as f:
-        f.readline()
-        for line in f.readlines():
-            parts = line.strip().split('\t')
-            projects.append([parts[0], parts[1], int(parts[2]), float(parts[3]), int(parts[4])])
-
+    load_project("projects.txt", projects)
 
     # Menu block
     print(MENU)
@@ -23,7 +18,14 @@ def main():
     while selection != "":
         match selection:
             case "L":
-                break
+                # Load project option
+                load_file = input("File name: ")
+                if "." not in load_file:
+                    load_file = f"{load_file}.txt"
+                if ".txt" not in load_file:
+                    print("Please only load .txt files")
+                else:
+                    load_project(load_file, projects)
             case "S":
                 break
             case "D":
@@ -39,6 +41,16 @@ def main():
         input(". . .")
         print(MENU)
         selection = input(">>> ")
+
+
+def load_project(load_file, projects):
+    projects.clear()
+    with open(load_file, 'r') as f:
+        f.readline()
+        for line in f.readlines():
+            parts = line.strip().split('\t')
+            projects.append([parts[0], parts[1], int(parts[2]), float(parts[3]), int(parts[4])])
+
 
 
 main()
