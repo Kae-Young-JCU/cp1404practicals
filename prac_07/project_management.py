@@ -22,7 +22,7 @@ def main():
     while selection != "":
         match selection.upper():
             case "L":
-                # Load project option
+                # Load file option
                 load_file = input("File name: ")
                 if "." not in load_file:
                     load_file = f"{load_file}.txt"
@@ -31,6 +31,7 @@ def main():
                 else:
                     load_projects(load_file, projects)
             case "S":
+                # Save file option
                 save_file = input("File name: ")
                 if "." not in save_file:
                     load_file = f"{save_file}.txt"
@@ -39,9 +40,12 @@ def main():
                 else:
                     load_projects(load_file, projects)
             case "D":
+                # Display projects option
                 display_projects(projects)
                 break
             case "F":
+                filter_date_str = input("Filter dates after (dd/mm/yyyy): ")
+                filter_date = str_to_date(filter_date_str)
                 break
             case "A":
                 break
@@ -55,6 +59,7 @@ def main():
 
 
 def str_to_date(str_date):
+    """Convert a date in form dd/mm/yyyy as a string into a datetime date"""
     parts = str_date.split("/")
     return datetime.datetime(int(parts[2]), int(parts[1]), int(parts[0]))
 
