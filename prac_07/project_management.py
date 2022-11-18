@@ -1,3 +1,5 @@
+import project
+
 MENU = "Select an option:\n" \
        "(L)oad\n" \
        "(S)ave\n" \
@@ -27,7 +29,13 @@ def main():
                 else:
                     load_project(load_file, projects)
             case "S":
-                break
+                save_file = input("File name: ")
+                if "." not in save_file:
+                    load_file = f"{save_file}.txt"
+                if ".txt" not in save_file:
+                    print("Please only load .txt files")
+                else:
+                    load_project(load_file, projects)
             case "D":
                 break
             case "F":
@@ -49,8 +57,13 @@ def load_project(load_file, projects):
         f.readline()
         for line in f.readlines():
             parts = line.strip().split('\t')
-            projects.append([parts[0], parts[1], int(parts[2]), float(parts[3]), int(parts[4])])
+            projects.append(project.Project(parts[0], parts[1], int(parts[2]), float(parts[3]), int(parts[4])))
 
+
+def save_project(save_file, projects):
+    with open(save_file, 'w+') as f:
+        f.write('\n')
+        f.writelines(projects)
 
 
 main()
