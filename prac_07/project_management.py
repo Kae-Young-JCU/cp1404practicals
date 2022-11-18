@@ -42,11 +42,10 @@ def main():
             case "D":
                 # Display projects option
                 display_projects(projects)
-                break
             case "F":
                 filter_date_str = input("Filter dates after (dd/mm/yyyy): ")
                 filter_date = str_to_date(filter_date_str)
-                break
+                filter_by_date(filter_date, projects)
             case "A":
                 break
             case "U":
@@ -70,7 +69,8 @@ def load_projects(load_file, projects):
         f.readline()
         for line in f.readlines():
             parts = line.strip().split('\t')
-            projects.append(project.Project(parts[0], str_to_date(parts[1]), int(parts[2]), float(parts[3]), int(parts[4])))
+            projects.append(project.Project(parts[0], str_to_date(parts[1]),
+                                            int(parts[2]), float(parts[3]), int(parts[4])))
 
 
 def save_projects(save_file, projects):
@@ -105,6 +105,16 @@ def display_projects(projects):
     for project_ in complete_projects:
         print(f"{counter}. {project_:d}")
         counter += 1
+
+
+def filter_by_date(filter_date, projects):
+    filtered_projects = [project_ for project_ in projects if project_.start_date > filter_date]
+    print(f"You have {len(filtered_projects)}:")
+    counter = 1
+    for project_ in filtered_projects:
+        print(f"{counter}. {project_:d}")
+        counter += 1
+
 
 
 main()
