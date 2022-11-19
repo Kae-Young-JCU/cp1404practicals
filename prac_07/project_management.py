@@ -43,9 +43,9 @@ def main():
                 # Display projects option
                 display_projects(projects)
             case "F":
+                # Filter projects by date option
                 filter_date_str = input("Filter dates after (dd/mm/yyyy): ")
-                filter_date = str_to_date(filter_date_str)
-                filter_by_date(filter_date, projects)
+                filter_by_date(filter_date_str, projects)
             case "A":
                 break
             case "U":
@@ -107,9 +107,10 @@ def display_projects(projects):
         counter += 1
 
 
-def filter_by_date(filter_date, projects):
+def filter_by_date(filter_date_str, projects):
+    filter_date = str_to_date(filter_date_str)
     filtered_projects = [project_ for project_ in projects if project_.start_date > filter_date]
-    print(f"You have {len(filtered_projects)}:")
+    print(f"You have {len(filtered_projects)} project that started after {filter_date_str}:")
     counter = 1
     for project_ in filtered_projects:
         print(f"{counter}. {project_:d}")
